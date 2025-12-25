@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Мобильный фотограф Алиса</title>
+
+  <link rel="stylesheet" href="static/css/style.css">
+  <script defer src="static/js/main.js"></script>
+</head>
+
+<body>
+  <div class="bg-blur"></div>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+  <a class="brand" href="index.html">📷</a>
+      <nav class="nav">
+        <a class="nav__link" href="index.html#portfolio">Портфолио</a>
+        <a class="nav__link" href="index.html#contacts">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO cover -->
+    <section class="cover" id="top">
+      <div class="cover__media">
+        <img class="cover__img" src="static/photos/hero_photos/hero_photo.jpg" alt="Алиса" loading="lazy">
+        <div class="cover__overlay"></div>
+        <div class="cover__diagonal"></div>
+      </div>
+
+      <div class="cover__content container">
+        <div class="cover__text js-reveal">
+          <h1 class="cover__title">Мобильный фотограф Алиса</h1>
+          <p class="cover__subtitle">Съёмка для тех, кто любит живые эмоции и свет.</p>
+          <p class="cover__tagline"> ~ "Не фотографирую, а создаю".</p>
+          <a class="btn btn--accent" href="#contacts">Связаться</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- STORY STRIP (photos + mini text alternating) -->
+    <section class="section section--paper" id="story">
+      <div class="container">
+        <div class="centerhead js-reveal">
+          <h2 class="h2">Немного о стиле</h2>
+          <p class="muted">Несколько кадров и короткие заметки — чтобы почувствовать настроение.</p>
+        </div>
+
+        <div class="story">
+          <article class="storyitem js-reveal">
+            <a class="storyitem__media" href="portfolio.html" aria-label="Открыть альбом">
+              <img class="storyitem__img" src="static/photos/portfolio/portfolio_10.jpg" alt="portfolio_10" loading="lazy">
+            </a>
+            <div class="storyitem__text">
+              <p class="muted">Люблю мягкий свет, простые позы и живые эмоции — без лишней постановки.</p>
+              <a class="linkarrow" href="portfolio.html">Смотреть альбом →</a>
+            </div>
+          </article>
+
+          <article class="storyitem js-reveal">
+            <a class="storyitem__media" href="portfolio.html" aria-label="Открыть альбом">
+              <img class="storyitem__img" src="static/photos/portfolio/portfolio_5.jpg" alt="portfolio_5" loading="lazy">
+            </a>
+            <div class="storyitem__text">
+              <p class="muted">Стараюсь поймать момент: ветер, шаг, взгляд, движение рук — всё, что делает кадр настоящим.</p>
+              <a class="linkarrow" href="portfolio.html">Смотреть альбом →</a>
+            </div>
+          </article>
+
+          <article class="storyitem js-reveal">
+            <a class="storyitem__media" href="portfolio.html" aria-label="Открыть альбом">
+              <img class="storyitem__img" src="static/photos/portfolio/portfolio_1.jpg" alt="portfolio_1" loading="lazy">
+            </a>
+            <div class="storyitem__text">
+              <p class="muted">Обработка аккуратная: сохранённые оттенки кожи, воздух, текстуры и немного киношного настроения.</p>
+              <a class="linkarrow" href="portfolio.html">Смотреть альбом →</a>
+            </div>
+          </article>
+
+          <article class="storyitem js-reveal">
+            <a class="storyitem__media" href="portfolio.html" aria-label="Открыть альбом">
+              <img class="storyitem__img" src="static/photos/portfolio/portfolio_4_1.png" alt="portfolio_4" loading="lazy">
+            </a>
+            <div class="storyitem__text">
+              <p class="muted">Съёмка на телефоне — это быстро, легко и очень современно, когда важна естественность.</p>
+              <a class="linkarrow" href="portfolio.html">Смотреть альбом →</a>
+            </div>
+          </article>
+
+          <article class="storyitem js-reveal">
+            <a class="storyitem__media" href="portfolio.html" aria-label="Открыть альбом">
+              <img class="storyitem__img" src="static/photos/portfolio/portfolio_2.png" alt="portfolio_2" loading="lazy">
+            </a>
+            <div class="storyitem__text">
+              <p class="muted">Локации выбираем вместе: город, вода, лестницы, окна, тёплые стены — там, где красиво именно тебе.</p>
+              <a class="linkarrow" href="portfolio.html">Смотреть альбом →</a>
+            </div>
+          </article>
+
+          <article class="storyitem js-reveal">
+            <a class="storyitem__media" href="portfolio.html" aria-label="Открыть альбом">
+              <img class="storyitem__img" src="static/photos/portfolio/portfolio_7.jpg" alt="portfolio_7" loading="lazy">
+            </a>
+            <div class="storyitem__text">
+              <p class="muted">Мой принцип — комфорт. В кадре не нужно «играть», достаточно быть собой.</p>
+              <a class="linkarrow" href="portfolio.html">Смотреть альбом →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLAGE (fills visual space) -->
+    <section class="section" id="collage">
+      <div class="container">
+        <div class="centerhead js-reveal">
+          <h2 class="h2">Новый локации - новый опыт.</h2>
+          <p class="muted">Выберу подходящую локацию для сьемки, обсудим детали и создадим уникальные образы - это просто!</p>
+        </div>
+        <div class="collage js-reveal">
+          <div class="collage-grid">
+            <div class="collage-grid__item"><img src="static/photos/new_collage/collage.jpg" alt="collage1" loading="lazy"></div>
+            <div class="collage-grid__item"><img src="static/photos/new_collage/collage2.jpg" alt="collage2" loading="lazy"></div>
+            <div class="collage-grid__item"><img src="static/photos/new_collage/collage3.jpg" alt="collage3" loading="lazy"></div>
+            <div class="collage-grid__item"><img src="static/photos/new_collage/collage4.jpg" alt="collage4" loading="lazy"></div>
+            <div class="collage-grid__item"><img src="static/photos/new_collage/collage5.jpg" alt="collage5" loading="lazy"></div>
+            <div class="collage-grid__item"><img src="static/photos/new_collage/collage6.jpg" alt="collage6" loading="lazy"></div>
+            <div class="collage-grid__item"><img src="static/photos/new_collage/collage7.jpg" alt="collage7" loading="lazy"></div>
+            <div class="collage-grid__item"><img src="static/photos/new_collage/collage8.jpg" alt="collage8" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section section--paper" id="services">
+      <div class="container">
+        <div class="centerhead js-reveal">
+          <h2 class="h2">Мои услуги</h2>
+        </div>
+        <div class="servicegrid js-reveal">
+          <article class="servicecard">
+            <div class="servicecard__name">Персональная съёмка</div>
+            <div class="servicecard__desc">60 минут • серия кадров • помощь с позированием, выбор локации</div>
+          </article>
+          <article class="servicecard servicecard--featured">
+            <div class="servicecard__name">Прогулочная сьемка</div>
+            <div class="servicecard__desc">2 часа • 5+ локаций • больше разнообразия</div>
+          </article>
+          <article class="servicecard">
+            <div class="servicecard__name">Семейная съёмка</div>
+            <div class="servicecard__desc">Атмосферная сьемка  • много кадров под разные задачи</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW I WORK -->
+    <section class="section section--paper" id="how">
+      <div class="container container--wide">
+        <div class="centerhead js-reveal">
+          <h2 class="h2">Мой подход к съемке</h2>
+        </div>
+        <div class="timeline js-reveal">
+          <div class="timeline__line"></div>
+          <div class="timeline__item">
+            <div class="timeline__dot">1</div>
+            <div class="timeline__body">
+              <div class="timeline__title">Обсуждение и выбор</div>
+              <div class="timeline__text">Обсуждаем идею, стиль, локацию и настроение. Помогу, подскажу - ваша идея увидит белый свет в самом прекрасном ее представлении</div>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__dot">2</div>
+            <div class="timeline__body">
+              <div class="timeline__title">Съемка</div>
+              <div class="timeline__text">Комфортный темп, подсказки по позированию и кадрам. Моя задача не только вас сфотографировать, но и создать атмосферу, в которой вы будете чувствовать себя естественно и раскрепощенно.</div>
+            </div>
+          </div>
+          <div class="timeline__item">
+            <div class="timeline__dot">3</div>
+            <div class="timeline__body">
+              <div class="timeline__title">Обработка и результат</div>
+              <div class="timeline__text">Подбор лучших фото и аккуратная обработка.Срок обговариаем сразу, в зависимости от объёмов съемки. Обрабатываю ваши фото с душой и вниманием к деталям.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO TEASER (instead of gallery on main) -->
+    <section class="section section--paper" id="portfolio">
+      <div class="container">
+        <div class="port-teaser js-reveal">
+          <div class="port-teaser__text">
+            <h2 class="h2">Портфолио</h2>
+          </div>
+          <a class="arrowbtn" href="portfolio.html" aria-label="Открыть портфолио">
+            <span class="arrowbtn__label">Открыть</span>
+            <span class="arrowbtn__circle">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTS (cover-like) -->
+    <section class="contactcover" id="contacts">
+      <div class="contactcover__media">
+        <div class="contactcover__veil"></div>
+      </div>
+      <div class="contactcover__content container">
+        <div class="contactcard js-reveal">
+          <h2 class="h2">Свяжитесь со мной</h2>
+          <p class="muted">Напиши — отвечу и предложу идеи.</p>
+          <div class="contactbtns">
+            <a class="btn btn--accent" href="https://t.me/aliceshevchuk" target="_blank" rel="noreferrer">Telegram</a>
+            <a class="btn btn--outline" href="https://t.me/shevchukalice" target="_blank" rel="noreferrer">Telegram‑канал</a>
+            <a class="btn btn--outline" href="https://instagram.com/username_here" target="_blank" rel="noreferrer">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- footer removed as per user request -->
+</body>
+</html>

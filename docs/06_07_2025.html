@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Мобильный фотограф Алиса</title>
+
+  <link rel="stylesheet" href="static/css/style.css">
+  <!-- Snow CSS: lightweight styles for snow canvas -->
+  <style>
+    /* canvas on top of page but below modals; pointer-events none so UI still works */
+    #snow-canvas{
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9000; /* below header z-index 9999 */
+      pointer-events: none;
+    }
+    /* optional: softer snow on mobile */
+    @media (max-width: 560px){
+      #snow-canvas{opacity: .9}
+    }
+  </style>
+  <script defer src="static/js/main.js"></script>
+</head>
+
+<body>
+  <div class="bg-blur"></div>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html">A.</a>
+      <nav class="nav">
+        <a class="nav__link" href="index.html#portfolio">Портфолио</a>
+        <a class="nav__link" href="index.html#contacts">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    
+<section class="section section--paper">
+  <div class="container">
+    <div class="centerhead js-reveal">
+      <h1 class="h2">Для тебя</h1>
+      <p class="muted">Поздравляю тебя моя родная!Ты - самое прекрасное что случилось со мной в этом году, и я очень рад что встретил тебя! Этот сайтик - твоя новая визитная карточка, посмотри на него и подумай что бы ты хотела поменять и что хотела бы добавить, твой верный админ реализует все в лучшем виде АТВЕЧАЮ БЛЯ!!!! - это заключительная часть твоего подарка....или нет? Смотри ниже!</p>
+    </div>
+
+    <div class="tilda-masonry js-reveal" style="margin-top: 26px;">
+      <!-- Галерея: фотографии из docs/static/photos/we/ -->
+      <figure class="tilda-masonry__item">
+        <img src="static/photos/we/we1.jpg" alt="we1" loading="lazy">
+      </figure>
+      <figure class="tilda-masonry__item">
+        <img src="static/photos/we/we2.jpg" alt="we2" loading="lazy">
+      </figure>
+      <figure class="tilda-masonry__item">
+        <img src="static/photos/we/we3.jpg" alt="we3" loading="lazy">
+      </figure>
+      <figure class="tilda-masonry__item">
+        <img src="static/photos/we/we4.jpg" alt="we4" loading="lazy">
+      </figure>
+      <figure class="tilda-masonry__item">
+        <img src="static/photos/we/we5.jpg" alt="we5" loading="lazy">
+      </figure>
+      <figure class="tilda-masonry__item">
+        <img src="static/photos/we/we6.jpg" alt="we6" loading="lazy">
+      </figure>
+      <figure class="tilda-masonry__item">
+        <img src="static/photos/we/we7.jpg" alt="we7" loading="lazy">
+      </figure>
+      <figure class="tilda-masonry__item">
+        <img src="static/photos/we/we8.jpg" alt="we8" loading="lazy">
+      </figure>
+      <figure class="tilda-masonry__item">
+        <img src="static/photos/we/we9.jpg" alt="we9" loading="lazy">
+      </figure>
+
+    </div>
+
+    <div class="centerhead js-reveal" style="margin-top: 40px;">
+      <h2 class="h2" style="font-size: 28px;">Подарок внутри</h2>
+      <p class="muted">Нажми кнопку — появится инструкция, как забрать TG‑premium.</p>
+
+      <div style="margin-top: 18px;">
+        <button class="btn btn--accent" type="button"
+          data-open-modal="true"
+          data-admin="@askollok"
+          data-code="Miss Knopkina">
+          Получить TG‑premium
+        </button>
+      </div>
+
+      <p class="muted" style="margin-top: 14px;">Кодовая фраза: “Miss Knopkina”.</p>
+    </div>
+  </div>
+</section>
+
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal__overlay" data-close="true"></div>
+
+  <div class="modal__card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal__close" type="button" data-close="true" aria-label="Закрыть">×</button>
+    <h3 class="modal__title" id="modal-title">Как получить TG Premium</h3>
+    <div class="modal__body" id="modal-body"></div>
+    <div class="modal__actions">
+      <button class="btn btn--outline" type="button" data-close="true">Поняла</button>
+    </div>
+  </div>
+</div>
+
+  </main>
+
+  <!-- Snow canvas + script -->
+  <canvas id="snow-canvas" aria-hidden="true"></canvas>
+  <script>
+  (function(){
+    const canvas = document.getElementById('snow-canvas');
+    const ctx = canvas.getContext('2d');
+    let W = canvas.width = window.innerWidth;
+    let H = canvas.height = window.innerHeight;
+
+    // particle settings
+    const flakes = [];
+    const flakeCount = Math.min(160, Math.round(W / 8)); // scale with width
+
+    function rand(min, max){ return Math.random() * (max - min) + min }
+
+    function createFlake(){
+      return {
+        x: rand(0, W),
+        y: rand(-H, 0),
+        r: rand(0.8, 3.4),
+        d: rand(0.5, 1.5),
+        vx: rand(-0.3, 0.6),
+        vy: rand(0.3, 1.2),
+        o: rand(0.4, 0.95)
+      };
+    }
+
+    for(let i=0;i<flakeCount;i++) flakes.push(createFlake());
+
+    let angle = 0;
+    function update(){
+      angle += 0.0025;
+      for(let i=0;i<flakes.length;i++){
+        const f = flakes[i];
+        // horizontal drift influenced by angle
+        f.x += Math.sin(angle + f.d) * f.vx;
+        f.y += f.vy;
+        // slightly vary velocity
+        f.vy += 0.0002 * f.r;
+        // wrap when falling out
+        if(f.y > H + 10 || f.x < -50 || f.x > W + 50){
+          flakes[i] = createFlake();
+          flakes[i].y = rand(-50, -10);
+        }
+      }
+    }
+
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      for(const f of flakes){
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(255,255,255,'+f.o+')';
+        ctx.arc(f.x, f.y, f.r, 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    let animId = null;
+    function loop(){ update(); draw(); animId = requestAnimationFrame(loop); }
+
+    function resize(){
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+      // adjust flakes array size a bit on resize
+      const target = Math.min(220, Math.max(40, Math.round(W / 8)));
+      while(flakes.length < target) flakes.push(createFlake());
+      while(flakes.length > target) flakes.pop();
+    }
+
+    // pause animation when tab inactive to save CPU
+    document.addEventListener('visibilitychange', function(){
+      if(document.hidden){ cancelAnimationFrame(animId); }
+      else{ animId = requestAnimationFrame(loop); }
+    });
+
+    window.addEventListener('resize', resize);
+    // start
+    animId = requestAnimationFrame(loop);
+  })();
+  </script>
+  <!-- footer removed as per user request -->
+</body>
+</html>
