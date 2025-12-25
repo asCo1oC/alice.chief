@@ -6,19 +6,16 @@
   <title>Мобильный фотограф Алиса</title>
 
   <link rel="stylesheet" href="static/css/style.css">
-  <!-- Snow CSS: lightweight styles for snow canvas -->
   <style>
-    /* canvas on top of page but below modals; pointer-events none so UI still works */
     #snow-canvas{
       position: fixed;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      z-index: 9000; /* below header z-index 9999 */
+      z-index: 9000; 
       pointer-events: none;
     }
-    /* optional: softer snow on mobile */
     @media (max-width: 560px){
       #snow-canvas{opacity: .9}
     }
@@ -49,7 +46,6 @@
     </div>
 
     <div class="tilda-masonry js-reveal" style="margin-top: 26px;">
-      <!-- Галерея: фотографии из docs/static/photos/we/ -->
       <figure class="tilda-masonry__item">
         <img src="static/photos/we/we1.jpg" alt="we1" loading="lazy">
       </figure>
@@ -93,7 +89,7 @@
         </button>
       </div>
 
-      <p class="muted" style="margin-top: 14px;">Кодовая фраза: “Miss Knopkina”.</p>
+      <p class="muted" style="margin-top: 14px;">Кодовая фраза: “Knopka photographer”.</p>
     </div>
   </div>
 </section>
@@ -113,7 +109,6 @@
 
   </main>
 
-  <!-- Snow canvas + script -->
   <canvas id="snow-canvas" aria-hidden="true"></canvas>
   <script>
   (function(){
@@ -122,9 +117,8 @@
     let W = canvas.width = window.innerWidth;
     let H = canvas.height = window.innerHeight;
 
-    // particle settings
     const flakes = [];
-    const flakeCount = Math.min(160, Math.round(W / 8)); // scale with width
+    const flakeCount = Math.min(160, Math.round(W / 8)); 
 
     function rand(min, max){ return Math.random() * (max - min) + min }
 
@@ -147,12 +141,9 @@
       angle += 0.0025;
       for(let i=0;i<flakes.length;i++){
         const f = flakes[i];
-        // horizontal drift influenced by angle
         f.x += Math.sin(angle + f.d) * f.vx;
         f.y += f.vy;
-        // slightly vary velocity
         f.vy += 0.0002 * f.r;
-        // wrap when falling out
         if(f.y > H + 10 || f.x < -50 || f.x > W + 50){
           flakes[i] = createFlake();
           flakes[i].y = rand(-50, -10);
@@ -176,23 +167,19 @@
     function resize(){
       W = canvas.width = window.innerWidth;
       H = canvas.height = window.innerHeight;
-      // adjust flakes array size a bit on resize
       const target = Math.min(220, Math.max(40, Math.round(W / 8)));
       while(flakes.length < target) flakes.push(createFlake());
       while(flakes.length > target) flakes.pop();
     }
 
-    // pause animation when tab inactive to save CPU
     document.addEventListener('visibilitychange', function(){
       if(document.hidden){ cancelAnimationFrame(animId); }
       else{ animId = requestAnimationFrame(loop); }
     });
 
     window.addEventListener('resize', resize);
-    // start
     animId = requestAnimationFrame(loop);
   })();
   </script>
-  <!-- footer removed as per user request -->
 </body>
 </html>
