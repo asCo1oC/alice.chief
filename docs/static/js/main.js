@@ -17,7 +17,6 @@
     els.forEach((el) => el.classList.add("is-visible"));
   }
 
-  // modal for premium (only when modal exists on page)
   const modal = document.getElementById("modal");
   const body = document.getElementById("modal-body");
 
@@ -36,7 +35,6 @@
     document.body.classList.remove("no-scroll");
   }
 
-  // Если модалки нет — не делаем ничего (чтобы на /portfolio ничего не “вылезало”)
   if (modal) {
     document.addEventListener("click", (e) => {
       const openBtn = e.target.closest("[data-open-modal='true']");
@@ -57,7 +55,6 @@
   }
 })();
 
-// --- album (portfolio page): arrows + dots + counter ---
 (function () {
   const root = document.querySelector("[data-album]");
   if (!root) return;
